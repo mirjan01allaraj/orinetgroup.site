@@ -63,10 +63,12 @@ export default async function ProjectDetailsPage({
     );
   }
 
-  // ✅ Gallery images (fallback to cover)
+  // ✅ Gallery images (fallback to cover) — type-safe even if Project type has no gallery yet
+  const gallery = (project as any).gallery as string[] | undefined;
+
   const images =
-    project.gallery?.length
-      ? project.gallery.map((src: string) => ({ src, alt: project.name }))
+    gallery?.length
+      ? gallery.map((src) => ({ src, alt: project.name }))
       : [{ src: project.cover, alt: project.name }];
 
   return (
