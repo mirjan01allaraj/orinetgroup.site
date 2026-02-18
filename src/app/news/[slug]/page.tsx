@@ -73,7 +73,8 @@ export default async function NewsDetailsPage({
         <img src={post.cover} alt={post.title} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/55 to-black/90" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-16">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pt-24 md:pt-16">
+
           <Link
             href={`/news?lang=${lang}`}
             className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm hover:bg-white/15"
@@ -89,7 +90,7 @@ export default async function NewsDetailsPage({
         </div>
       </div>
 
-      <div className="relative -mt-10 px-4 pb-14">
+      <div className="relative mt-6 md:-mt-10 px-4 pb-14">
         <div className="mx-auto max-w-6xl space-y-4">
           <GlassCard>
             <div className="space-y-3 text-white/75">

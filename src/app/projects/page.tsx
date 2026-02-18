@@ -33,7 +33,7 @@ export default async function ProjectsPage({
         secondary={{ label: lang === "en" ? "News" : "Lajme", href: "/news" }}
       />
 
-      <div className="relative -mt-10 px-4 pb-14">
+      <div className="relative mt-6 md:-mt-10 px-4 pb-14">
         <div className="mx-auto max-w-6xl space-y-4">
           <GlassCard>
             <div className="grid gap-3 md:grid-cols-4">
