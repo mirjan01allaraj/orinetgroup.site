@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import GlassCard from "@/components/GlassCard";
 import Section from "@/components/Section";
-
+import Link from "next/link";
 export default function HomeScroll({
   lang,
   content,
@@ -122,19 +122,13 @@ export default function HomeScroll({
                   </p>
 
                   <div className="mt-7 flex flex-wrap gap-3">
-                    <a
-                      href="/contact"
-                      className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90"
-                    >
-                      {content.primary}
-                    </a>
+                    <Link href="/contact" className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-white/90">
+                     {content.primary}
+                         </Link>
 
-                    <a
-                      href="/projects"
-                      className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold backdrop-blur hover:bg-white/15"
-                    >
-                      {content.secondary}
-                    </a>
+                    <Link href="/projects" className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold backdrop-blur hover:bg-white/15">
+                       {content.secondary}
+                       </Link>
                   </div>
                 </div>
               </div>
