@@ -32,7 +32,7 @@ export default function NewsPage({
         secondary={{ label: lang === "en" ? "Contact" : "Kontakt", href: "/contact" }}
       />
 
-      <div className="relative mt-16 md:mt-20 px-4 pb-14">
+      <div className="relative mt-16 md:mt-20 px-4 pb-14">z
         <div className="mx-auto max-w-6xl space-y-4">
           <GlassCard>
             <div>
