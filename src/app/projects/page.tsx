@@ -9,12 +9,13 @@ export const metadata: Metadata = {
   description: "Portfolio across infrastructure, industrial, residential and commercial sectors.",
 };
 
-export default function ProjectsPage({
+export default async function ProjectsPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
+  const sp = (await searchParams) ?? undefined; // ✅ Next 15 fix
+  const lang = getLangFromSearchParams(sp);
   const projects = getProjects(lang);
 
   return (
