@@ -13,12 +13,13 @@ type StepItem = {
   desc: string;
 };
 
-export function generateMetadata({
+export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
-}): Metadata {
-  const lang = getLangFromSearchParams(searchParams);
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}): Promise<Metadata> {
+  const sp = (await searchParams) ?? undefined;
+  const lang = getLangFromSearchParams(sp);
 
   return buildMetadata({
     lang,
@@ -32,12 +33,13 @@ export function generateMetadata({
   });
 }
 
-export default function ServicesPage({
+export default async function ServicesPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams) as Lang;
+  const sp = (await searchParams) ?? undefined;
+  const lang = getLangFromSearchParams(sp) as Lang;
 
   const withLang = (href: string) => (lang === "en" ? `${href}?lang=en` : href);
 
