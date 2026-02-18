@@ -5,15 +5,17 @@ import { getLangFromSearchParams } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Credibility page: who we are, roles, sectors, values, and certifications.",
+  description:
+    "Credibility page: who we are, roles, sectors, values, and certifications.",
 };
 
-export default function AboutPage({
+export default async function AboutPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
+  const sp = (await searchParams) ?? undefined; // ✅ Next 15: searchParams is a Promise
+  const lang = getLangFromSearchParams(sp);
 
   const t = {
     kicker: lang === "en" ? "Credibility" : "Kredibilitet",
@@ -39,14 +41,25 @@ export default function AboutPage({
           ? "Infrastructure, industrial facilities, residential blocks, commercial spaces."
           : "Infrastrukturë, objekte industriale, pallate rezidenciale, hapësira komerciale.",
       valuesTitle: lang === "en" ? "Values" : "Vlerat",
-      values: lang === "en"
-        ? ["Safety first", "Documentation & traceability", "Cost + schedule control", "Quality assurance"]
-        : ["Siguria e para", "Dokumentim & gjurmueshmëri", "Kontroll kosto + afate", "Siguri cilësie"],
+      values:
+        lang === "en"
+          ? [
+              "Safety first",
+              "Documentation & traceability",
+              "Cost + schedule control",
+              "Quality assurance",
+            ]
+          : [
+              "Siguria e para",
+              "Dokumentim & gjurmueshmëri",
+              "Kontroll kosto + afate",
+              "Siguri cilësie",
+            ],
       certTitle: lang === "en" ? "Certifications" : "Certifikime",
       certText:
         lang === "en"
-          ? "Add your ISO/technical certifications here (placeholders ready)."
-          : "Vendosni këtu ISO/certifikimet teknike (placeholder gati).",
+          ? " ISO/technical certifications here."
+          : " ISO/certifikimet teknike .",
     },
   };
 
@@ -57,12 +70,17 @@ export default function AboutPage({
         kicker={t.kicker}
         title={t.title}
         subtitle={t.subtitle}
-        primary={{ label: lang === "en" ? "Projects" : "Projektet", href: "/projects" }}
-        secondary={{ label: lang === "en" ? "Contact" : "Kontakt", href: "/contact" }}
+        primary={{
+          label: lang === "en" ? "Projects" : "Projektet",
+          href: "/projects",
+        }}
+        secondary={{
+          label: lang === "en" ? "Contact" : "Kontakt",
+          href: "/contact",
+        }}
       />
 
       <div className="relative mt-16 md:mt-20 px-4 pb-14">
-
         <div className="mx-auto max-w-6xl space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <GlassCard>
@@ -107,9 +125,18 @@ export default function AboutPage({
             <p className="mt-2 text-white/70">{t.blocks.certText}</p>
 
             <div className="mt-4 grid gap-3 md:grid-cols-3">
-              <CertCard title="ISO 9001" note={lang === "en" ? "Quality Management" : "Menaxhim Cilësie"} />
-              <CertCard title="ISO 14001" note={lang === "en" ? "Environmental" : "Mjedisore"} />
-              <CertCard title="ISO 45001" note={lang === "en" ? "Health & Safety" : "Shëndet & Siguri"} />
+              <CertCard
+                title="ISO 9001"
+                note={lang === "en" ? "Quality Management" : "Menaxhim Cilësie"}
+              />
+              <CertCard
+                title="ISO 14001"
+                note={lang === "en" ? "Environmental" : "Mjedisore"}
+              />
+              <CertCard
+                title="ISO 45001"
+                note={lang === "en" ? "Health & Safety" : "Shëndet & Siguri"}
+              />
             </div>
           </GlassCard>
         </div>
