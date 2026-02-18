@@ -9,12 +9,13 @@ export const metadata: Metadata = {
   description: "Announcements, project updates, and company milestones.",
 };
 
-export default function NewsPage({
+export default async function NewsPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
+  const sp = (await searchParams) ?? undefined; // ✅ Next 15: searchParams is a Promise
+  const lang = getLangFromSearchParams(sp);
   const posts = getNews(lang);
 
   return (
@@ -32,13 +33,17 @@ export default function NewsPage({
         secondary={{ label: lang === "en" ? "Contact" : "Kontakt", href: "/contact" }}
       />
 
-      <div className="relative mt-16 md:mt-20 px-4 pb-14">z
+      <div className="relative mt-16 md:mt-20 px-4 pb-14">
         <div className="mx-auto max-w-6xl space-y-4">
           <GlassCard>
             <div>
-              <h2 className="text-xl font-semibold">{lang === "en" ? "Latest posts" : "Postimet e fundit"}</h2>
+              <h2 className="text-xl font-semibold">
+                {lang === "en" ? "Latest posts" : "Postimet e fundit"}
+              </h2>
               <p className="mt-1 text-white/70">
-                {lang === "en" ? "Company updates and progress." : "Përditësime të kompanisë dhe progres."}
+                {lang === "en"
+                  ? "Company updates and progress."
+                  : "Përditësime të kompanisë dhe progres."}
               </p>
             </div>
           </GlassCard>
