@@ -13,15 +13,18 @@ export function generateStaticParams() {
   return all.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-}): Metadata {
-  const lang = getLangFromSearchParams(searchParams);
-  const project = getProjectBySlug(lang, params.slug);
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const sp = (await searchParams) ?? undefined;
+
+  const lang = getLangFromSearchParams(sp);
+  const project = getProjectBySlug(lang, slug);
   if (!project) return { title: "Project" };
 
   return {
@@ -35,15 +38,18 @@ export function generateMetadata({
   };
 }
 
-export default function ProjectDetailsPage({
+export default async function ProjectDetailsPage({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
-  const project = getProjectBySlug(lang, params.slug);
+  const { slug } = await params;
+  const sp = (await searchParams) ?? undefined;
+
+  const lang = getLangFromSearchParams(sp);
+  const project = getProjectBySlug(lang, slug);
 
   if (!project) {
     return (
