@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import GlassCard from "@/components/GlassCard";
-import { formatDateISO, getLangFromSearchParams, getNews, getNewsBySlug } from "@/lib/content";
+import {
+  formatDateISO,
+  getLangFromSearchParams,
+  getNews,
+  getNewsBySlug,
+} from "@/lib/content";
 
 export function generateStaticParams() {
   const all = [
@@ -12,15 +17,18 @@ export function generateStaticParams() {
   return all.filter((x) => (seen.has(x.slug) ? false : (seen.add(x.slug), true)));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-}): Metadata {
-  const lang = getLangFromSearchParams(searchParams);
-  const post = getNewsBySlug(lang, params.slug);
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const sp = (await searchParams) ?? undefined;
+
+  const lang = getLangFromSearchParams(sp);
+  const post = getNewsBySlug(lang, slug);
   if (!post) return { title: "News" };
 
   return {
@@ -34,15 +42,18 @@ export function generateMetadata({
   };
 }
 
-export default function NewsDetailsPage({
+export default async function NewsDetailsPage({
   params,
   searchParams,
 }: {
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
-  const post = getNewsBySlug(lang, params.slug);
+  const { slug } = await params;
+  const sp = (await searchParams) ?? undefined;
+
+  const lang = getLangFromSearchParams(sp);
+  const post = getNewsBySlug(lang, slug);
 
   if (!post) {
     return (
