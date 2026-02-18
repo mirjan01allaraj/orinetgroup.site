@@ -8,12 +8,13 @@ export const metadata: Metadata = {
   description: "Investment options: pre-order property, land-for-share, joint ventures.",
 };
 
-export default function InvestPage({
+export default async function InvestPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
+  const sp = (await searchParams) ?? undefined; // ✅ Next 15: searchParams is a Promise
+  const lang = getLangFromSearchParams(sp);
 
   const t = {
     kicker: lang === "en" ? "Partnership" : "Partneritet",
@@ -75,7 +76,9 @@ export default function InvestPage({
           </div>
 
           <GlassCard>
-            <h2 className="text-xl font-semibold">{lang === "en" ? "What we provide" : "Çfarë ofrojmë"}</h2>
+            <h2 className="text-xl font-semibold">
+              {lang === "en" ? "What we provide" : "Çfarë ofrojmë"}
+            </h2>
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               <Bullet text={lang === "en" ? "Investment model proposal" : "Propozim modeli investimi"} />
               <Bullet text={lang === "en" ? "Project scope + timeline" : "Scope projekti + afate"} />
