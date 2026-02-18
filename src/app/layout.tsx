@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://orientgroup.al"),
@@ -46,8 +47,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sq">
       <body className="min-h-screen bg-neutral-950 text-white antialiased">
-        <Header />
+        <Suspense fallback={<div className="h-[72px]" />}>
+          <Header />
+        </Suspense>
+
         {children}
+
         <Footer />
       </body>
     </html>
