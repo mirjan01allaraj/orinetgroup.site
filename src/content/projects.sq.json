@@ -1,0 +1,89 @@
+[
+  {
+    "slug": "steel-hall-logistics",
+    "name": "Ndërtim i hapësirave publike të argëtimit",
+    "location": "Tiranë, AL",
+    "year": 2025,
+    "sector": "Industrial",
+    "roles": ["Contractor"],
+    "areaM2": 6800,
+    "excerpt": "Sallë sportive me soletë heavy-duty dhe zgjidhje strukturore të optimizuara.",
+    "cover": "/images/steel-frame.webp",
+    "gallery": [
+      "/images/steel-frame.webp",
+      "/images/steel-frame-2.webp",
+      "/images/steel-frame-3.webp"
+    ],
+    "body": [
+      "Objekt i realizuar me fokus të veçantë në disiplinën e ndërtimit, zbatimin korrekt të projektit dhe dokumentimin e plotë teknik.",
+      "Punime civile, strukturë, mbyllje dhe detaje sipas standardeve të projektit.",
+      "Dorëzim me kontrolle cilësie dhe evidencë teknike."
+    ]
+  },
+  {
+    "slug": "residential-block-tirana",
+    "name": "Ndërtim Rezidencial — Tiranë",
+    "location": "Tiranë, AL",
+    "year": 2024,
+    "sector": "Residential",
+    "roles": ["Contractor"],
+    "areaM2": 120,
+    "excerpt": "Ndërtim rezidencial i fokusuar në zbatim cilësor, integritet strukturor dhe komoditet afatgjatë të banimit.",
+    "cover": "/images/project-residential.webp",
+    "gallery": [
+      "/images/project-residential.webp",
+      "/images/project-residential-1.webp",
+      "/images/project-residential-2.webp"
+      
+    ],
+    "body": [
+      "Zbatim me faza dhe kontroll kosto/afate.",
+      "Koordinim nënkontraktorësh dhe furnizimesh.",
+      "Dokumentim final për dorëzim dhe mirëmbajtje."
+    ]
+  }
+  ,
+  {
+    "slug": "business-center-kamez",
+    "name": "Autoservis & Objekt Komercial — Kamëz",
+    "location": "Kamëz, AL",
+    "year": 2024,
+    "sector": "Komercial / Automotiv",
+    "roles": ["EPC"],
+    "areaM2": 5200,
+    "excerpt": "Objekt modern autoservisi me hapësira të integruara komerciale dhe administrative.",
+    "cover": "/images/project-business.webp",
+    "gallery": [
+      "/images/project-business.webp",
+      "/images/project-business-2.webp",
+      "/images/project-business-3.webp"
+    ],
+    "body": [
+      "Projektim dhe zbatim i një objekti modern autoservisi me disa bokse shërbimi të pajisura me porta industriale me hapje vertikale për akses efikas të automjeteve.",
+      "Punime strukturore, fasadë me veshje metalike vertikale, hapje të mëdha xhami dhe koordinim të plotë të instalimeve MEP për funksionim optimal të aktivitetit automotiv.",
+      "Kati i sipërm i destinuar për hapësira administrative dhe mbështetëse, i dorëzuar me dokumentacion teknik të plotë dhe paketë përfundimtare të dorëzimit."
+    ]
+  },
+  {
+    "slug": "modern-warehouse-tirana",
+    "name": "Magazinë Moderne & Objekt Logjistik",
+    "location": "Tiranë, AL",
+    "year": 2023,
+    "sector": "Industrial / Logjistikë",
+    "roles": ["Contractor"],
+    "areaM2": 900,
+    "excerpt": "Objekt magazinimi bashkëkohor i projektuar për efikasitet logjistik dhe funksionalitet operacional.",
+    "cover": "/images/project-infrastructure.webp",
+    "gallery": [
+      "/images/project-infrastructure.webp",
+      "/images/project-infrastructure-2.webp",
+      "/images/project-infrastructure-3.webp"
+    ],
+    "body": [
+      "Ndërtim i një objekti modern magazinimi me linja arkitekturore të pastra dhe akses të optimizuar për transport dhe operacione ngarkim-shkarkimi.",
+      "Punime strukturore, veshje fasade me panele metalike vertikale, porta industriale me dimensione të mëdha dhe organizim funksional i qarkullimit në kantier.",
+      "Realizuar me procedura të plota kontrolli cilësie dhe dorëzuar me dokumentacion teknik dhe vizatime as-built."
+    ]
+  }
+
+]

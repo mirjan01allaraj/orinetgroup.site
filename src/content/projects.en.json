@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "steel-hall-logistics",
+    "name": "Construction of public recreational spaces.",
+    "location": "Tirana, AL",
+    "year": 2025,
+    "sector": "Industrial",
+    "roles": ["Contractor"],
+    "areaM2": 680,
+    "excerpt": "Sports hall with a heavy-duty slab and optimized structural solutions.",
+    "cover": "/images/steel-frame.webp",
+    "gallery": [
+      "/images/steel-frame.webp",
+      "/images/steel-frame-2.webp",
+      "/images/steel-frame-3.webp"
+    ],
+    "body": [
+      "Project executed with a strong focus on construction discipline, proper project implementation, and comprehensive technical documentation.",
+      "Civil works, structure, enclosure and details per project standards.",
+      "Delivered with QA checks and technical handover records."
+    ]
+  },
+  {
+    "slug": "residential-block-tirana",
+    "name": "Residential Building — Tirana",
+    "location": "Tirana, AL",
+    "year": 2024,
+    "sector": "Residential",
+    "roles": ["Contractor"],
+    "areaM2": 120,
+    "excerpt": "Residential construction focused on quality execution, structural integrity, and long-term living comfort.",
+    "cover": "/images/project-residential.webp",
+    "gallery": [
+   "/images/project-residential.webp",
+      "/images/project-residential-1.webp",
+      "/images/project-residential-2.webp"
+    ],
+    "body": [
+      "Phased execution with schedule/cost control.",
+      "Subcontractor and procurement coordination.",
+      "Final documentation for handover and maintenance."
+    ]
+  }
+  ,
+  {
+    "slug": "business-center-kamez",
+    "name": "Auto Service & Commercial Facility — Kamëz",
+    "location": "Kamëz, AL",
+    "year": 2024,
+    "sector": "Commercial / Automotive",
+    "roles": ["EPC"],
+    "areaM2": 520,
+    "excerpt": "Modern auto service facility with integrated commercial and administrative spaces.",
+    "cover": "/images/project-business.webp",
+    "gallery": [
+      "/images/project-business.webp",
+      "/images/project-business-2.webp",
+      "/images/project-business-3.webp"
+    ],
+    "body": [
+      "Design and execution of a modern auto service facility featuring multiple service bays with industrial roller shutter access.",
+      "Structural works, façade cladding with vertical metal elements, large glazed openings, and full MEP coordination for automotive operations.",
+      "Upper floor developed for administrative and support functions, delivered with complete technical documentation and handover package."
+    ]
+  },
+  {
+    "slug": "modern-warehouse-tirana",
+    "name": "Modern Warehouse & Logistics Facility",
+    "location": "Tirana, AL",
+    "year": 2023,
+    "sector": "Industrial / Logistics",
+    "roles": ["Contractor"],
+    "areaM2": 900,
+    "excerpt": "Contemporary warehouse facility designed for logistics efficiency and operational functionality.",
+    "cover": "/images/project-infrastructure.webp",
+    "gallery": [
+      "/images/project-infrastructure.webp",
+      "/images/project-infrastructure-2.webp",
+      "/images/project-infrastructure-3.webp"
+    ],
+    "body": [
+      "Construction of a modern warehouse facility featuring clean architectural lines and optimized access for transport and loading operations.",
+      "Structural works, façade cladding with vertical metal panels, large industrial access doors and coordinated site circulation.",
+      "Executed with full quality control procedures and delivered with complete technical documentation and as-built records."
+    ]
+  }
+
+]
