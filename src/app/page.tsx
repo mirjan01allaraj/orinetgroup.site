@@ -2,12 +2,13 @@
 import HomeScroll from "@/components/HomeScroll";
 import { getLangFromSearchParams } from "@/lib/content";
 
-export default function HomePage({
+export default async function HomePage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const lang = getLangFromSearchParams(searchParams);
+  const sp = (await searchParams) ?? undefined; // ✅ Next 15 fix
+  const lang = getLangFromSearchParams(sp);
 
   const content = {
     sq: {
