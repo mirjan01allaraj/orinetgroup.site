@@ -8,14 +8,16 @@ export const metadata: Metadata = {
   description: "Contact ORIENT GROUP shpk — request an offer or consultation.",
 };
 
-export default function ContactPage({
+type SearchParams = Record<string, string | string[] | undefined>;
+
+export default async function ContactPage({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<SearchParams>;
 }) {
-  // If you already have your own lang detection elsewhere, keep it.
-  // Otherwise this is a safe fallback:
-  const langParam = searchParams?.lang;
+  const sp: SearchParams = searchParams ? await searchParams : {};
+
+  const langParam = sp.lang;
   const lang =
     (Array.isArray(langParam) ? langParam[0] : langParam) === "en" ? "en" : "sq";
 
@@ -54,7 +56,7 @@ export default function ContactPage({
           <GlassCard>
             <h2 className="text-xl font-semibold">{lang === "en" ? "Write to us" : "Na shkruaj"}</h2>
 
-            {/* ✅ FIX: pass toEmail */}
+            {/* ✅ required prop */}
             <ContactForm lang={lang} toEmail={SITE.email} />
           </GlassCard>
         </div>
