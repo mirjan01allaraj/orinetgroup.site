@@ -47,7 +47,7 @@ export default function ContactForm({ toEmail, lang }: Props) {
         };
 
   const isValid = useMemo(() => {
-    return name.trim() && fromEmail.trim() && message.trim();
+    return !!(name.trim() && fromEmail.trim() && message.trim());
   }, [name, fromEmail, message]);
 
   const buildBody = () => {
@@ -72,18 +72,19 @@ export default function ContactForm({ toEmail, lang }: Props) {
     const subject = t.subject(name.trim());
     const body = buildBody();
 
-    // Desktop: Gmail compose in browser
+    // ✅ Gmail web compose (best for desktop & most browsers)
     const gmailWeb = `https://mail.google.com/mail/?view=cm&fs=1&to=${enc(
       toEmail
     )}&su=${enc(subject)}&body=${enc(body)}`;
 
-    // Fallback: default mail app
+    // fallback: default mail app
     const mailto = `mailto:${toEmail}?subject=${enc(subject)}&body=${enc(body)}`;
 
-    // Mobile Gmail schemes (best-effort)
     const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
     const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
+    // Mobile Gmail schemes (best effort)
     const gmailIOS = `googlegmail://co?to=${enc(toEmail)}&subject=${enc(
       subject
     )}&body=${enc(body)}`;
@@ -92,12 +93,13 @@ export default function ContactForm({ toEmail, lang }: Props) {
       subject
     )}&body=${enc(body)}#Intent;scheme=googlegmail;package=com.google.android.gm;end`;
 
+    // ✅ Desktop: DO NOT use window.open (popup blockers). Use location.
     if (!isMobile) {
-      window.open(gmailWeb, "_blank", "noopener,noreferrer");
+      window.location.href = gmailWeb;
       return;
     }
 
-    // Mobile: try Gmail app, then fallback to mailto
+    // ✅ Mobile: try Gmail app, then fallback to mailto
     let didFallback = false;
     const fallback = () => {
       if (didFallback) return;
@@ -105,7 +107,6 @@ export default function ContactForm({ toEmail, lang }: Props) {
       window.location.href = mailto;
     };
 
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
     if (isIOS) {
       window.location.href = gmailIOS;
       window.setTimeout(fallback, 900);
@@ -133,6 +134,7 @@ export default function ContactForm({ toEmail, lang }: Props) {
         className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/20"
         required
       />
+
       <input
         name="email"
         type="email"
@@ -142,6 +144,7 @@ export default function ContactForm({ toEmail, lang }: Props) {
         className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/20"
         required
       />
+
       <input
         name="phone"
         value={phone}
@@ -149,6 +152,7 @@ export default function ContactForm({ toEmail, lang }: Props) {
         placeholder={t.phonePh}
         className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/20"
       />
+
       <textarea
         name="message"
         value={message}
